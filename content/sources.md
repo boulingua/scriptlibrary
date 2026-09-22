@@ -18,6 +18,12 @@ The original literary texts included here are public domain in Germany and the U
 | Der Sandmann | Deutsch | E. T. A. Hoffmann (1822) | 1816 | [Catalogue](https://www.gutenberg.org/ebooks/6341) |
 | Dr Jekyll and Mr Hyde | English | Robert Louis Stevenson (1894) | 1886 | [Catalogue](https://www.gutenberg.org/ebooks/43) |
 | Trois contes | Français | Gustave Flaubert (1880) | 1877 | [Catalogue](https://www.gutenberg.org/ebooks/12065) |
+| Immensee | Deutsch | Theodor Storm (1888) | 1849 | [Catalogue](https://www.gutenberg.org/ebooks/6651) |
+| Michael Kohlhaas | Deutsch | Heinrich von Kleist (1811) | 1810 | [Catalogue](https://www.gutenberg.org/ebooks/6645) |
+| Micromégas | Français | Voltaire (1778) | 1752 | [Catalogue](https://www.gutenberg.org/ebooks/4649) |
+| La Mare au Diable | Français | George Sand (1876) | 1846 | [Catalogue](https://www.gutenberg.org/ebooks/23582) |
+| The Time Machine | English | H. G. Wells (1946) | 1895 | [Catalogue](https://www.gutenberg.org/ebooks/35) |
+| The Canterville Ghost | English | Oscar Wilde (1900) | 1887 | [Catalogue](https://www.gutenberg.org/ebooks/14522) |
 
 Each PDF reproduces the complete **Project Gutenberg licence**, unchanged, and its source notice. The reader links to the full licence and a free original-text download for each book. Files are distributed without charge. See [the source licence](https://www.gutenberg.org/policy/license) and [redistribution guidance](https://www.gutenberg.org/policy/permission).
 
@@ -52,6 +58,18 @@ The repository records each retrieved source's SHA-256 digest, extraction policy
 **Dr Jekyll and Mr Hyde:** Complete ten-chapter original English text of Strange Case of Dr Jekyll and Mr Hyde. Source chapter headings and paragraph divisions are retained.
 
 **Trois contes:** Complete French collection: Un cœur simple (five sections), La Légende de saint Julien l’Hospitalier (three sections), and Hérodias (three sections). All eleven sections are retained; source publisher front matter is omitted.
+
+**Immensee:** Complete ten-section German novella; historical spelling, verse and paragraph divisions retained.
+
+**Michael Kohlhaas:** Complete German novella extracted from Ausgewählte Schriften, beginning at Michael Kohlhaas and ending before the source end notice. Other works in the collection and publisher front matter are excluded.
+
+**Micromégas:** Complete seven-chapter French tale. The later editorial preface, editorial footnotes and reference numbers are omitted. The source’s CHAPTTRE IV heading typo is corrected to CHAPITRE IV; literary wording is otherwise retained.
+
+**La Mare au Diable:** Complete French work: Sand’s authorial Notice, all seventeen main chapters and all four appendix sections on country weddings. Dialogue speaker labels are retained. Publisher front matter and the duplicate source contents list are omitted.
+
+**The Time Machine:** Complete original English text, all sixteen chapters and the Epilogue. Source chapter headings and paragraph divisions are retained.
+
+**The Canterville Ghost:** Complete seven-section original English story. Source illustrations, their captions, the illustration list and publisher front matter are omitted; narrative paragraphs and verse are retained.
 
 ## Requested works not included
 

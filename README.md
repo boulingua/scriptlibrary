@@ -6,13 +6,13 @@ Companion extension: [Scriptbridge](https://github.com/boulingua/scriptbridge). 
 
 ## Collection
 
-| Language | Four books |
+| Language | Six books |
 |---|---|
-| German | Die Verwandlung; Faust I; Der Schimmelreiter; Der Sandmann |
-| French | Candide; Eugénie Grandet; Le Horla et autres nouvelles; Trois contes |
-| English | Alice’s Adventures in Wonderland; Hamlet; A Christmas Carol; Dr Jekyll and Mr Hyde |
+| German | Die Verwandlung; Faust I; Der Schimmelreiter; Der Sandmann; Immensee; Michael Kohlhaas |
+| French | Candide; Eugénie Grandet; Le Horla et autres nouvelles; Trois contes; Micromégas; La Mare au Diable |
+| English | Alice’s Adventures in Wonderland; Hamlet; A Christmas Carol; Dr Jekyll and Mr Hyde; The Time Machine; The Canterville Ghost |
 
-Each title has an original PDF and **20%, 100%, and increasing 20–100% PDFs** for each of five practice sets: Greek, Cyrillic, Nordic, Polish and Czech. That is **192 PDFs** in total. Original TXT downloads are also available. The increasing edition follows paragraph order across the whole book, with 20% at the first paragraph and 100% at the last; headings, introductory material and licences remain unchanged. Percentages refer to eligible letters, never all characters.
+Each title has an original PDF and **20%, 100%, and increasing 20–100% PDFs** for each of five practice sets: Greek, Cyrillic, Nordic, Polish and Czech. That is **288 PDFs** in total. Original TXT downloads are also available. The increasing edition follows paragraph order across the whole book, with 20% at the first paragraph and 100% at the last; headings, introductory material and licences remain unchanged. Percentages refer to eligible letters, never all characters.
 
 The online reader supports fixed 0–100% and the same progressive schedule. Preferences remain in browser local storage. Without JavaScript, complete originals remain readable. Cyrillic and Nordic are deliberately consolidated introductory sets; their introductions explain country/language differences and omitted letters. The page includes an English/German learning-purpose disclaimer; practice PDFs include a disclaimer, notes and the applicable alphabet introduction.
 
@@ -24,7 +24,7 @@ The course header, footer, light/dark control and core CSS are imported from `ki
 
 ## Rebuild editions
 
-Use Node 22+ and Python 3.12+ with `pip install -r requirements.txt`, then `python3 scripts/build_books.py`. Set `BOOK_WORKERS` to control local parallel PDF workers (default 6); use `--books horla` for a deliberate single-title rebuild after checking engine consistency. It reads only frozen local sources. The twelve-book collection preserves complete selected works. `sources/books.json` records each extraction boundary and section count, including Faust’s preliminary pieces, Hamlet’s cast and scenes, and every story in the two French collections. PDFs retain searchable Unicode, embedded fonts, contents, outline bookmarks, running heads, original authorship, source notes and the complete source licence.
+Use Node 22+ and Python 3.12+ with `pip install -r requirements.txt`, then `python3 scripts/build_books.py`. Set `BOOK_WORKERS` to control local parallel PDF workers (default 6); use `--books horla` for a deliberate single-title rebuild after checking engine consistency. It reads only frozen local sources. The eighteen-book collection preserves complete selected works. `sources/books.json` records each extraction boundary and section count, including Faust’s preliminary pieces, Hamlet’s cast and scenes, and every story in the two French collections. PDFs retain searchable Unicode, embedded fonts, contents, outline bookmarks, running heads, original authorship, source notes and the complete source licence.
 
 The unchanged JS engine is vendored with a SHA-256 lock. To update deliberately from the sibling extension, run `python3 scripts/sync_engine.py --source ../scriptbridge`, review the engine and lock changes, rebuild editions, and run the verification. Ordinary builds never silently sync rules or fetch new book text.
 
@@ -70,7 +70,7 @@ Use `LIBRARY_URL` to test a different preview address. On Linux, missing browser
 | `sources/editions-manifest.json` | Generated edition metadata and digests. |
 | `data/texts/`, `static/books-data/` | Extracted chapter and paragraph data. |
 | `content/`, `layouts/`, `assets/css/` | Hugo pages, reader templates and product styles. |
-| `static/downloads/` | 192 PDFs, original text downloads and extension ZIP. |
+| `static/downloads/` | 288 PDFs, original text downloads and extension ZIP. |
 | `static/js/engine.js`, `third_party/` | Shared engine, digest locks and dependency licences. |
 | `scripts/` | Extraction, PDF generation, explicit engine sync and verification. |
 | `tests/` | Browser integration checks. |
@@ -80,7 +80,7 @@ Generated book content and downloads are committed so deployment never needs to 
 ## Update editions or add a title
 
 1. For mapping changes, update and test Scriptbridge first, then run `python3 scripts/sync_engine.py --source ../scriptbridge` here.
-2. For a new title, record the original author, death and publication dates, catalogue URL, jurisdiction-specific rights basis, complete distribution licence, frozen source SHA-256, extraction scope and expected chapter count. Add extraction support in `scripts/build_books.py` as needed; the current parsers are specific to the twelve included books.
+2. For a new title, record the original author, death and publication dates, catalogue URL, jurisdiction-specific rights basis, complete distribution licence, frozen source SHA-256, extraction scope and expected chapter count. Add extraction support in `scripts/build_books.py` as needed; the current parsers are specific to the eighteen included books.
 3. Run `python3 scripts/build_books.py`, review the generated text and representative PDF pages, and run the provenance, build, link and browser checks above. Confirm complete chapters, typography, bookmarks, glyph coverage and retained source terms.
 4. If the extension changes, package it in its repository, copy the resulting ZIP to `static/downloads/`, and update `third_party/extension.lock.json` with its version, relative file path and SHA-256. Engine sync alone does not refresh the ZIP. The verifier checks that its embedded engine matches the library.
 5. Commit source records, generated data, downloads and digest locks together. Document changed scope and verification in the state and handover files.

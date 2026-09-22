@@ -67,6 +67,38 @@ def extract(book):
                 if isinstance(n,Tag) and (n.name=='h2' or n.get('id')=='pg-footer'):break
                 if isinstance(n,Tag) and n.name=='p':ps.append(n)
             chapters.append((clean(h.get_text(' ')),ps))
+    elif book['id'] in ['immensee','time-machine']:
+        chapters=[(clean(d.h2.get_text(' ')),d.find_all('p')) for d in soup.select('div.chapter')]
+    elif book['id']=='michael-kohlhaas':
+        start=soup.find(id='id00165');ps=[]
+        if clean(start.get_text())!='Michael Kohlhaas':raise ValueError('Kohlhaas start boundary')
+        for p in start.find_all_next('p'):
+            if p.find_parent(id='pg-footer') or clean(p.get_text()).startswith('Ende dieses Projekt Gutenberg'):break
+            ps.append(p)
+        chapters=[('Michael Kohlhaas',ps)]
+    elif book['id'] in ['micromegas','canterville-ghost']:
+        current=None
+        for n in soup.body.find_all(['h2','p']):
+            if n.find_parent(id='pg-footer'):break
+            title=clean(n.get_text(' '))
+            is_heading=n.name=='h2' and (bool(re.match(r'^CHAP(?:I|T)TRE [IVX]+[.]',title)) if book['id']=='micromegas' else title in ['I','II','III','IV','V','VI','VII'])
+            if is_heading:
+                current=[title.replace('CHAPTTRE','CHAPITRE'),[]];chapters.append(current)
+            elif n.name=='p' and current and not set(n.get('class',[]))&{'footnote','caption'} and not n.find('img') and not title.startswith("FIN DE L'HISTOIRE"):
+                current[1].append(n)
+    elif book['id']=='mare-au-diable':
+        titles=['id00043','id00060','id00080','id00098','id00125','id00149','id00203','id00231','id00298','id00330','id00387','id00423','id00443','id00498','id00545','id00568','id00603','id00627','id00650','id00757','id00784']
+        current=None
+        for n in soup.body.find_all(['h2','h4','p']):
+            if n.find_parent(id='pg-footer'):break
+            id=n.get('id');title=clean(n.get_text(' '))
+            if id=='id00012':current=['Notice de George Sand',[]];chapters.append(current)
+            elif id=='id00016':current=None
+            elif id in titles:
+                number=titles.index(id)+1
+                prefix=f'{number}. ' if number<=17 else f'Appendice {number-17}. '
+                current=[prefix+title,[]];chapters.append(current)
+            elif current and (n.name=='p' or title in ['GEORGE SAND.','LE CHANVREUR','LE FOSSOYEUR']) and title!='APPENDICE':current[1].append(n)
     elif book['id']=='sandmann':
         start=next(p for p in soup.find_all('p') if clean(p.get_text())=='Der Sandmann')
         ps=[]
@@ -239,6 +271,9 @@ def main():
     if args.books and not set(args.books)<=set(b['id'] for b in BOOKS):raise ValueError('Unknown book selection')
     previous={b['id']:b for b in json.loads((ROOT/'data/catalog.json').read_text())} if args.books else {}
     lock=json.loads((ROOT/'third_party/engine.lock.json').read_text())
+    if args.books:
+        previous_manifest=json.loads((ROOT/'sources/editions-manifest.json').read_text())
+        if previous_manifest['engine']!=lock or previous_manifest['schedule']['sha256']!=digest(ROOT/'static/js/editions.js'):raise ValueError('Shared rules changed: rebuild all books')
     if digest(ROOT/'static/js/engine.js')!=lock['sha256']:raise ValueError('Engine digest mismatch; sync it explicitly')
     write_json(ROOT/'data/profiles.json',[dict(id=k,label=v) for k,v in PROFILES])
     catalog=[]

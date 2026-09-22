@@ -25,7 +25,7 @@ Browser tests expect the preview on port 1317, overrideable with `LIBRARY_URL`. 
 
 ## Editions and limitations
 
-Version 0.2.0 has twelve books (four per source language), five practice sets and 192 PDFs. Greek, shared Cyrillic, Nordic, Polish and Czech each have fixed 20%, fixed 100% and progressive 20–100% editions. The shared `static/js/editions.js` schedule uses global paragraph position and is digest-recorded alongside the engine. Reader and PDF runs use the same seed and rate. English/German learning disclaimers and Cyrillic/Nordic differences are part of the product.
+Version 0.2.0 has eighteen books (six per source language), five practice sets and 288 PDFs. Greek, shared Cyrillic, Nordic, Polish and Czech each have fixed 20%, fixed 100% and progressive 20–100% editions. The shared `static/js/editions.js` schedule uses global paragraph position and is digest-recorded alongside the engine. Reader and PDF runs use the same seed and rate. English/German learning disclaimers and Cyrillic/Nordic differences are part of the product.
 
 Only a limited sound-compatible subset is transformed, especially in the Latin practice sets. Cyrillic is deliberately consolidated; Nordic does not claim one common alphabet. Camus and Le Petit Prince were excluded for rights reasons; Maupassant fills that conditional slot.
 

@@ -16,8 +16,8 @@ assert sha(root/'static'/extension['file'])==extension['sha256']
 with ZipFile(root/'static'/extension['file']) as z:
     assert hashlib.sha256(z.read('engine.js')).hexdigest()==lock['sha256']
 sources=json.loads((root/'sources/books.json').read_text())
-assert len(sources)==len(manifest['books'])==12
-assert all(sum(b['language']==lang for b in sources)==4 for lang in ['de','fr','en'])
+assert len(sources)==len(manifest['books'])==18
+assert all(sum(b['language']==lang for b in sources)==6 for lang in ['de','fr','en'])
 assert json.loads((root/'data/catalog.json').read_text())==manifest['books']
 profiles=json.loads((root/'data/profiles.json').read_text())
 pdfs=0;pages=0
@@ -55,5 +55,5 @@ for book in manifest['books']:
     print(book['id'],len(data['chapters']),'chapters;',book['words'],'words;',len(book['editions']),'PDFs verified')
 font=TTFont(root/'static/fonts/NotoSerif-Regular.ttf');cmap=font.getBestCmap()
 for ch in 'μνπτκφλρσςβζαιобдфгклмнпрствзжґіøæäö':assert ord(ch) in cmap,f'Missing font glyph {ch}'
-assert pdfs==192
+assert pdfs==288
 print(f'PASS: {pdfs} PDFs, {pages} pages; frozen sources, full licences, outlines, authors, font coverage and engine digest')

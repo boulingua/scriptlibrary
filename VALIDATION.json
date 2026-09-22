@@ -6,20 +6,21 @@
   "go_version": "1.26.1",
   "strict_production_build": "passed",
   "local_link_checks": {
-    "checked": 685,
+    "checked": 943,
     "failed": 0
   },
-  "books": 12,
-  "chapters": 137,
-  "words": 381047,
-  "pdfs": 192,
-  "pdf_pages": 27635,
+  "books": 18,
+  "chapters": 201,
+  "words": 512427,
+  "pdfs": 288,
+  "pdf_pages": 36623,
   "pdf_checks": "passed: complete licence, author, outline, chapter count, source and output hashes, embedded character coverage",
   "out_of_page_text_blocks": 0,
-  "reader_engine_combinations_checked": 192,
+  "reader_engine_combinations_checked": 288,
   "chromium_reader": "passed: exact parity, settings, original view, mobile menu, dark mode, no-JS fallback, no errors/failed requests",
-  "visual_review": "representative covers, keys, contents, body pages; desktop/mobile and light/dark",
+  "visual_review": "Representative covers, keys, contents and body pages; all six new books reviewed; desktop/mobile and light/dark",
   "version": "0.2.0",
   "publication_note": "Local v0.2.0 evidence; hosted status for the corresponding commit is recorded by GitHub Actions.",
-  "progression_tests": "passed: fixed rates, global paragraph progression, endpoints, monotonicity and invalid mode"
+  "progression_tests": "passed: fixed rates, global paragraph progression, endpoints, monotonicity and invalid mode",
+  "previous_edition_hashes_preserved": 192
 }

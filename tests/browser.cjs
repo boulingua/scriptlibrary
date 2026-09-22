@@ -36,6 +36,6 @@ const D=require('../static/js/editions.js'),E=require('../static/js/engine.js'),
  await page.setViewportSize({width:1440,height:1000});await page.evaluate(()=>window.scrollTo(0,document.querySelector('#chapter-1').getBoundingClientRect().top+scrollY-35));await page.screenshot({path:path.join(root,'tmp/reader-desktop.png')});
  const nojs=await browser.newContext({javaScriptEnabled:false});const plain=await nojs.newPage();await plain.goto(base+'books/alice/');assert.equal(await plain.locator('[data-paragraph]').count(),catalog[0].id==='alice'?JSON.parse(fs.readFileSync(path.join(root,'data/texts/alice.json'))).chapters.flatMap(c=>c.paragraphs).length:0);assert.match(await plain.locator('[data-paragraph]').first().innerText(),/^Alice was beginning/);await nojs.close();
  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
- console.log('PASS: all 192 reader/edition combinations agree exactly; persisted settings, original view, dark mode, mobile menu, responsive covers, no-JS complete text; no browser errors or failed requests.');
+ console.log('PASS: all 288 reader/edition combinations agree exactly; persisted settings, original view, dark mode, mobile menu, responsive covers, no-JS complete text; no browser errors or failed requests.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
