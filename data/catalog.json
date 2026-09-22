@@ -1,0 +1,209 @@
+[
+  {
+    "id": "alice",
+    "title": "Alice’s Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "author_death": 1898,
+    "language": "en",
+    "language_name": "English",
+    "year": 1865,
+    "pg_id": 11,
+    "expected_chapters": 12,
+    "mark": "μ",
+    "description": "Follow Alice down the rabbit-hole, through wordplay, riddles and wonderfully peculiar conversations.",
+    "edition_note": "Complete twelve-chapter original English text. A text-only edition: source illustrations are omitted. Paragraphs, verse line breaks and italic emphasis are retained.",
+    "source_url": "https://www.gutenberg.org/ebooks/11",
+    "source_download": "https://www.gutenberg.org/cache/epub/11/pg11-images.html",
+    "rights_basis": "Original literary text: public domain in the USA (source catalogue) and Germany (UrhG §§64,69; author died more than 70 calendar years ago). No modern translation or illustrations included. Source distribution terms are retained in every edition.",
+    "rights_checked": "2026-09-22",
+    "source_sha256": "10111a8147b902f5f109d788d5c08445c219f47c6cfcf3021cb9adf60056a9fc",
+    "pg_notice": "This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook.",
+    "chapters": 12,
+    "words": 26349,
+    "editions": [
+      {
+        "profile": "original",
+        "label": "Original",
+        "pdf": "downloads/alice-original.pdf",
+        "pages": 111,
+        "sha256": "758d242597b83a5e126ea98c0feba29810ecad9963bf9b0e1b43f02987ba5386",
+        "replaced": 0,
+        "eligible": 27261
+      },
+      {
+        "profile": "greek",
+        "label": "Modern Greek",
+        "pdf": "downloads/alice-greek.pdf",
+        "pages": 112,
+        "sha256": "35135bbda347d811a8ce046966e2bde2a441afbed031826bd14fa1332b12ba3f",
+        "replaced": 5448,
+        "eligible": 27261
+      },
+      {
+        "profile": "russian",
+        "label": "Russian Cyrillic",
+        "pdf": "downloads/alice-russian.pdf",
+        "pages": 112,
+        "sha256": "5e233cfff42d951d63a45f0131364ccf66f3f5306161b4b02f6400c2d501f07a",
+        "replaced": 6654,
+        "eligible": 33559
+      },
+      {
+        "profile": "ukrainian",
+        "label": "Ukrainian",
+        "pdf": "downloads/alice-ukrainian.pdf",
+        "pages": 112,
+        "sha256": "c4279584fd046f63d16c538d98ac00021f1f331debc46b454c8dae51e348029a",
+        "replaced": 6478,
+        "eligible": 32724
+      },
+      {
+        "profile": "nordic",
+        "label": "Nordic letters",
+        "pdf": "downloads/alice-nordic.pdf",
+        "pages": 111,
+        "sha256": "865f89b89367a864e6b02be52482920764c3f8d241b5fe0865c1eef2f8801887",
+        "replaced": 304,
+        "eligible": 1419
+      }
+    ]
+  },
+  {
+    "id": "candide",
+    "title": "Candide, ou l’optimisme",
+    "author": "Voltaire",
+    "author_death": 1778,
+    "language": "fr",
+    "language_name": "Français",
+    "year": 1759,
+    "pg_id": 4650,
+    "expected_chapters": 30,
+    "mark": "н",
+    "description": "Candide travels an uncertain world in Voltaire’s brisk, sharp French satire.",
+    "edition_note": "Complete thirty-chapter original French narrative. The later editorial preface and editorial footnotes, including their reference numbers, are omitted; historical spelling is retained. This is not a modern translation.",
+    "source_url": "https://www.gutenberg.org/ebooks/4650",
+    "source_download": "https://www.gutenberg.org/cache/epub/4650/pg4650-images.html",
+    "rights_basis": "Original literary text: public domain in the USA (source catalogue) and Germany (UrhG §§64,69; author died more than 70 calendar years ago). No modern translation or illustrations included. Source distribution terms are retained in every edition.",
+    "rights_checked": "2026-09-22",
+    "source_sha256": "1943630540b37e1d84a4b9e7b99a2ef006d47f3bc1f27e94cde76123298a18f3",
+    "pg_notice": "This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook.",
+    "chapters": 30,
+    "words": 31686,
+    "editions": [
+      {
+        "profile": "original",
+        "label": "Original",
+        "pdf": "downloads/candide-original.pdf",
+        "pages": 131,
+        "sha256": "b59ec4eff9906a919349564cd184241168e1a70446153759496e80735d40d760",
+        "replaced": 0,
+        "eligible": 38933
+      },
+      {
+        "profile": "greek",
+        "label": "Modern Greek",
+        "pdf": "downloads/candide-greek.pdf",
+        "pages": 133,
+        "sha256": "4b5acaca99512dee612644884444ed16edc312883cc14777dc9b3bd21ad21801",
+        "replaced": 7791,
+        "eligible": 38933
+      },
+      {
+        "profile": "russian",
+        "label": "Russian Cyrillic",
+        "pdf": "downloads/candide-russian.pdf",
+        "pages": 134,
+        "sha256": "a0f6a37d454e12324e952850df43f8b86cedd3629b1839ebaafe976ebcc8b904",
+        "replaced": 9578,
+        "eligible": 47762
+      },
+      {
+        "profile": "ukrainian",
+        "label": "Ukrainian",
+        "pdf": "downloads/candide-ukrainian.pdf",
+        "pages": 133,
+        "sha256": "c98308e359452932fcd862483e5f9cb26753960941969308fe5f084a86ac719c",
+        "replaced": 9080,
+        "eligible": 45094
+      },
+      {
+        "profile": "nordic",
+        "label": "Nordic letters",
+        "pdf": "downloads/candide-nordic.pdf",
+        "pages": 131,
+        "sha256": "0b2b001c63c105edc34c54b13e66e42fbe9ad90f1fd0041c6e9a9cae1337ce16",
+        "replaced": 174,
+        "eligible": 844
+      }
+    ]
+  },
+  {
+    "id": "verwandlung",
+    "title": "Die Verwandlung",
+    "author": "Franz Kafka",
+    "author_death": 1924,
+    "language": "de",
+    "language_name": "Deutsch",
+    "year": 1915,
+    "pg_id": 22367,
+    "expected_chapters": 3,
+    "mark": "і",
+    "description": "Gregor Samsa wakes into an impossible morning. Read Kafka’s complete three-part novella in German.",
+    "edition_note": "Complete three-part original German narrative. The source publisher’s front matter is omitted. Historical spelling and paragraph divisions are retained.",
+    "source_url": "https://www.gutenberg.org/ebooks/22367",
+    "source_download": "https://www.gutenberg.org/cache/epub/22367/pg22367-images.html",
+    "rights_basis": "Original literary text: public domain in the USA (source catalogue) and Germany (UrhG §§64,69; author died more than 70 calendar years ago). No modern translation or illustrations included. Source distribution terms are retained in every edition.",
+    "rights_checked": "2026-09-22",
+    "source_sha256": "3f426d710ae48361a34c90615ee8b61689702953df655c7c1e16132190286c8a",
+    "pg_notice": "This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook.",
+    "chapters": 3,
+    "words": 19243,
+    "editions": [
+      {
+        "profile": "original",
+        "label": "Original",
+        "pdf": "downloads/verwandlung-original.pdf",
+        "pages": 81,
+        "sha256": "d7c0880a79d8e09a8f64aa6133230443e5be006e4256d704ff450abebfc32d77",
+        "replaced": 0,
+        "eligible": 35796
+      },
+      {
+        "profile": "greek",
+        "label": "Modern Greek",
+        "pdf": "downloads/verwandlung-greek.pdf",
+        "pages": 81,
+        "sha256": "05934f6af4a81bae41d5d62547df09005e5a08107a907dffc9925ee4f5d88c1c",
+        "replaced": 7102,
+        "eligible": 35796
+      },
+      {
+        "profile": "russian",
+        "label": "Russian Cyrillic",
+        "pdf": "downloads/verwandlung-russian.pdf",
+        "pages": 82,
+        "sha256": "62ebc2d6f2867c3bec2e59b27146f7847dbe97993630e878bdf24782ce4de03f",
+        "replaced": 8056,
+        "eligible": 40582
+      },
+      {
+        "profile": "ukrainian",
+        "label": "Ukrainian",
+        "pdf": "downloads/verwandlung-ukrainian.pdf",
+        "pages": 82,
+        "sha256": "86b48e34bd6c9affc3d76b9f931edb6fa0c4eadb05db32539647208e6511b785",
+        "replaced": 7715,
+        "eligible": 38831
+      },
+      {
+        "profile": "nordic",
+        "label": "Nordic letters",
+        "pdf": "downloads/verwandlung-nordic.pdf",
+        "pages": 81,
+        "sha256": "5a900dc41d74a961d5b310d3b1f3ffd2e104f85ba1dc9b8fea7ee8fd888c8411",
+        "replaced": 67,
+        "eligible": 325
+      }
+    ]
+  }
+]

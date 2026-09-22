@@ -1,0 +1,22 @@
+{
+  "checked": "2026-09-22",
+  "hosted_ci_verified": false,
+  "published": false,
+  "hugo_version": "0.159.2 extended",
+  "go_version": "1.26.1",
+  "strict_production_build": "passed",
+  "local_link_checks": {
+    "checked": 236,
+    "failed": 0
+  },
+  "books": 3,
+  "chapters": 45,
+  "words": 77278,
+  "pdfs": 15,
+  "pdf_pages": 1627,
+  "pdf_checks": "passed: complete licence, author, outline, chapter count, source and output hashes, embedded character coverage",
+  "out_of_page_text_blocks": 0,
+  "reader_engine_combinations_checked": 15,
+  "chromium_reader": "passed: exact parity, settings, original view, mobile menu, dark mode, no-JS fallback, no errors/failed requests",
+  "visual_review": "representative covers, keys, contents, body pages; desktop/mobile and light/dark"
+}

@@ -1,0 +1,6 @@
+{
+  "package": "@boulingua/scriptbridge",
+  "version": "0.1.0",
+  "source": "scriptbridge/extension/engine.js",
+  "sha256": "2649dbced58f1ac58abc1cf833e0218e12e02f472054410851c0d7dbca15649d"
+}

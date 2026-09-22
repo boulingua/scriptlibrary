@@ -1,0 +1,9 @@
+public/
+resources/
+.hugo_build.lock
+.venv/
+__pycache__/
+node_modules/
+tmp/
+.tools/
+build-check/

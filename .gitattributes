@@ -1,0 +1,5 @@
+sources/raw/*.html binary
+*.pdf binary
+*.ttf binary
+*.otf binary
+*.zip binary

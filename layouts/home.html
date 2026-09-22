@@ -1,0 +1,10 @@
+{{ define "content" }}
+<section class="container library-home">
+  <header class="library-intro"><p class="shelf-note">The Boulingua reading room</p><h1>Familiar stories.<br>Unfamiliar letters.</h1><p>Read a classic in its original language. Let a few letters change as you go, until another alphabet starts to feel at home.</p><div class="letter-sample" aria-hidden="true">m <span>μ</span> n <span>н</span> i <span>і</span> ö <span>ø</span></div></header>
+  <div class="shelf-heading"><h2>Choose a book</h2><p>Complete texts · adjustable online · typeset PDFs</p></div>
+  <div class="book-shelf">{{ range sort hugo.Data.catalog "language" }}
+    <article class="book-card"><a class="book-cover cover-{{ .language }}" href="{{ printf "books/%s/" .id | relURL }}" aria-label="Read {{ .title }}"><span class="cover-author">{{ .author }}</span><span class="cover-title">{{ .title }}</span><span class="cover-mark" aria-hidden="true">{{ .mark }}</span><span class="cover-imprint">boulingua</span></a><div class="book-caption"><span>{{ .language_name }} · {{ .year }}</span><h3><a href="{{ printf "books/%s/" .id | relURL }}">{{ .title }}</a></h3><p>{{ .description }}</p><a class="text-link" href="{{ printf "books/%s/" .id | relURL }}">Read & download</a></div></article>
+  {{ end }}</div>
+  <aside class="reading-note"><h2>A small change in the way you read</h2><p>Start at 20% of eligible letters. Keep the story in its original language; practise Modern Greek, Russian Cyrillic, Ukrainian, or selected Nordic letters. Switch back to the original whenever you like.</p><a href="{{ "about/" | relURL }}">See the sound-matching guide</a></aside>
+</section>
+{{ end }}
