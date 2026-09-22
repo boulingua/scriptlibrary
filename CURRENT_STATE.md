@@ -1,21 +1,15 @@
 # Current state — 2026-09-22
 
-Local version 0.1.0. Hugo library implemented with pinned Boulingua kit v1.22.0 and hugo-coder. The public repository is `https://github.com/boulingua/scriptlibrary`, with `main` as the publication branch. GitHub Pages is configured to deploy through GitHub Actions at `https://boulingua.github.io/scriptlibrary/`; check the workflow for hosted deployment status.
+Version 0.2.0. Public repository: https://github.com/boulingua/scriptlibrary, branch `main`. Pages: https://boulingua.github.io/scriptlibrary/. Check GitHub Actions for the hosted status of the current commit; local verification below precedes publication.
 
-Three complete original-language narratives, 45 chapters, 77,278 words:
+Twelve complete selected original-language works, four each in German, French and English: 137 sections, 381,047 words. The catalogue and source extraction policies are in `sources/books.json`.
 
-| Book | Chapters | Words |
-|---|---:|---:|
-| Alice’s Adventures in Wonderland | 12 | 26,349 |
-| Candide, ou l’optimisme | 30 | 31,686 |
-| Die Verwandlung | 3 | 19,243 |
+Five practice sets: Greek, shared Cyrillic, Nordic, Polish and Czech. Every title has an unchanged original and three PDF densities per set: 20%, 100%, progressive 20–100%. Total: **192 searchable A5 PDFs, 27,635 pages**. Progressive rates follow global paragraph order, never reset at chapters, and use the same shared schedule and engine as the online reader. Both source modules have digests in the edition manifest.
 
-15 searchable A5 PDFs, totalling 1,627 pages: original plus four practice editions for each book. Each practice edition uses a deterministic 20% sample of eligible letters. The online reader adjusts 0–100%, remembers settings locally, and retains a complete original-text fallback without JavaScript. PDF authors remain the literary authors. Source catalogues, frozen HTML, SHA-256 locks and full source licences are retained.
+Cyrillic and Nordic introductions explain language/country differences and the limited shared subset. Page and PDF learning disclaimers explain the simplified treatment of pronunciation, spelling, stress and regional usage, in English and German. Nordic does not apply Icelandic æ with Norwegian sound values. Polish/Czech are intentionally sparse. No complete-language or learning-effectiveness claim is made.
 
-Verified: strict Hugo production build; local links/assets/downloads; complete PDF licence text, source/engine/PDF hashes, chapter counts, bookmarks, author metadata and glyph coverage; no out-of-page text blocks across all 1,627 pages. Representative PDF pages and desktop/mobile/light/dark browser views inspected. Browser tests compare all 15 book/profile combinations exactly against the edition engine and exercise persistence, original view, mobile navigation and no-JavaScript reading.
+Camus and Le Petit Prince are excluded for rights reasons. Maupassant’s full Le Horla collection fills the conditional slot. The collection includes Faust I with its preliminary pieces, all Hamlet scenes and cast, and the complete selected Sandmann story from Nachtstücke. Frozen source HTML, source notices, full licences, author metadata and output digests are retained. No modern translations, source illustrations or VG Wort marks are included.
 
-The local checkout contains ignored, checksum-verified Hugo 0.159.2 and Go 1.26.1 tools under `.tools/`. `scripts/hugo.sh` uses them without changing the global environment. This convenience payload is not part of Git; a fresh clone installs the documented toolchain normally.
+Local verification passed: 192 exact reader/edition combinations, fixed/progressive schedule tests, persisted settings, original view, no-JavaScript complete text, mobile navigation and light/dark views; strict Hugo build; 685 local references without failures; all PDF/source/engine digests, complete licence text, outlines and fonts. Every PDF page was scanned for out-of-page text (zero issues); representative covers, notes, contents, prose and drama pages were visually reviewed. This is not a visual inspection of every page or a linguistic review of every word.
 
-Text is public domain in Germany and the USA; source distribution terms remain applicable. No modern translation or illustrations are included. Candide's later editorial preface and footnotes are excluded explicitly. No VG Wort marks or curriculum-conformance claims are assigned to the library.
-
-README expanded for fresh clones, usage, troubleshooting, maintenance and licensing on 2026-09-22. Local checks rerun successfully before publication: extension unit/DOM and Chromium integration tests; library PDF/provenance verification, strict production build, 236 local references and browser parity checks.
+Hugo extended 0.159.2 and Go 1.26.1 remain pinned; ignored `.tools/` provides the local toolchain. Extension 0.2.0 is bundled and digest-checked. See `HANDOVER.md` for continuation and rebuild commands.

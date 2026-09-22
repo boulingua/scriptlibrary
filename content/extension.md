@@ -4,7 +4,7 @@ title: Practise on other websites
 
 **Scriptbridge** brings the same letter practice to ordinary websites. Choose the page's source language, a target alphabet, a letter set, and the percentage of eligible letters to replace.
 
-[Download the Chrome extension ZIP](../downloads/scriptbridge-0.1.0.zip).
+[Download the Chrome extension ZIP](../downloads/scriptbridge-0.2.0.zip).
 
 1. Unpack the ZIP into a folder you will keep.
 2. Open `chrome://extensions` in Chrome or Chromium.

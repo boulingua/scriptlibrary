@@ -1,12 +1,16 @@
-/* Scriptbridge 0.1.0. Shared unchanged with the reading library under MIT. */
+/* Scriptbridge 0.2.0. Shared unchanged with the reading library under MIT. */
 (function (root) {
   'use strict';
   const profiles = {
     greek: { label: 'Modern Greek', language: 'el', map: {m:'μ',n:'ν',p:'π',t:'τ',k:'κ',f:'φ',l:'λ',r:'ρ',s:'σ',v:'β',z:'ζ',a:'α',i:'ι',o:'ο',e:'ε'}, note: 'Modern sounds: β is /v/, not /b/. ρ is a tapped or trilled r. Final σ becomes ς.' },
-    russian: { label: 'Russian Cyrillic', language: 'ru', map: {b:'б',d:'д',f:'ф',g:'г',k:'к',l:'л',m:'м',n:'н',p:'п',r:'р',s:'с',t:'т',v:'в',z:'з',a:'а',i:'и',o:'о',j:'ж'}, note: 'Approximate consonant values; palatalisation and vowel reduction are not taught by this exercise.' },
-    ukrainian: { label: 'Ukrainian', language: 'uk', map: {b:'б',d:'д',f:'ф',g:'ґ',k:'к',l:'л',m:'м',n:'н',p:'п',r:'р',s:'с',t:'т',z:'з',a:'а',i:'і',o:'о',j:'ж'}, note: 'Uses ґ for /g/ and і for /i/. Ukrainian г is not Russian г. Context-dependent в is omitted.' },
     nordic: { label: 'Nordic letters', language: 'nb', map: {'ö':'ø','è':'ä','ê':'ä','a':'æ'}, note: 'Norwegian ø for German ö; Swedish ä for French è/ê; Norwegian æ only in a small English /æ/ word list. Nordic languages do not share one pronunciation system.' }
   };
+  profiles.cyrillic={label:'Cyrillic',language:'und-Cyrl',map:{b:'б',d:'д',f:'ф',k:'к',l:'л',m:'м',n:'н',p:'п',r:'р',s:'с',t:'т',z:'з',a:'а',o:'о',j:'ж'},note:'A shared introductory subset, not the alphabet of one language. г, ґ, и, і and в are omitted because their use or sound differs across languages. Sound matches remain approximate.'};
+  profiles.polish={label:'Polish letters',language:'pl',map:{j:'ż',y:'j',w:'ł',z:'c'},note:'French j → ż, German z → c, consonantal English y → j and selected English w → ł. These are contextual sound matches, not visual substitutions.',staged:false};
+  profiles.czech={label:'Czech letters',language:'cs',map:{j:'ž',y:'j',z:'c'},note:'French j → ž, German z → c and consonantal English y → j. Czech č, š and ř are not approximated by unrelated single letters.',staged:false};
+  profiles.nordic.map={...profiles.nordic.map};
+  profiles.nordic.note='Selected Nordic letters, not one alphabet: Norwegian/Danish ø for German ö; Swedish ä for French è/ê; Norwegian/Danish æ for selected English /æ/ words. Icelandic æ is /ai/ and is taught in the introduction only, not mixed into the same replacement rule. Icelandic þ and ð are not single-letter English matches.';
+  profiles.nordic.staged=false;
   const letters = /\p{L}/u;
   const vowel = /[aeiouyäöüàâéèêëîïôùûœæ]/u;
   const language = value => ({eng:'en',fra:'fr',fre:'fr',deu:'de',ger:'de'}[String(value).toLowerCase()] || String(value || '').toLowerCase().split(/[-_]/)[0]);
@@ -17,7 +21,7 @@
     return h >>> 0;
   }
   function settings(input = {}) {
-    return {profile: Object.hasOwn(profiles,input.profile) ? input.profile : 'greek',
+    return {profile: input.profile==='icelandic' ? 'nordic' : ['russian','ukrainian','belarusian','bulgarian','serbian','macedonian','bosnian','montenegrin','rusyn'].includes(input.profile) ? 'cyrillic' : Object.hasOwn(profiles,input.profile) ? input.profile : 'greek',
       source: ['en','fr','de'].includes(language(input.source)) ? language(input.source) : 'en',
       percent: Number.isFinite(Number(input.percent)) ? Math.min(100,Math.max(0,Number(input.percent))) : 20,
       stage: [1,2,3].includes(Number(input.stage)) ? Number(input.stage) : 3,
@@ -28,6 +32,12 @@
   function eligible(word, index, source, profile) {
     const w = word.toLowerCase(), c = w[index], prev = w[index-1] || '', next = w[index+1] || '';
     if (/\p{M}/u.test(next)) return false;
+    if (profile==='polish'||profile==='czech') {
+      if(source==='fr')return c==='j';
+      if(source==='de')return c==='z' && next!=='s' && prev!=='t';
+      if(c==='y')return index===0 && vowel.test(next);
+      return profile==='polish' && c==='w' && index===0 && /[aeiou]/.test(next) && !['who','whom','whose','whole','two','answer','sword'].includes(w);
+    }
     if (profile==='nordic') {
       if(source==='de')return c==='ö';
       if(source==='fr')return 'èê'.includes(c);
@@ -82,9 +92,9 @@
       return Array.from(word).map((char,i)=>{
         if(letters.test(char))letterCount++;
         const lower=char.toLowerCase();
-        if(opt.profile!=='nordic' && opt.stage<3 && !(opt.stage===1?'mnt':'mntpkflbd').includes(lower))return char;
+        if(profile.staged!==false && opt.stage<3 && !(opt.stage===1?'mnt':'mntpkflbd').includes(lower))return char;
         let target=profile.map[lower];
-        if (opt.source==='de' && lower==='w' && opt.profile!=='ukrainian') target=profile.map.v;
+        if (opt.source==='de' && lower==='w' && opt.profile!=='ukrainian' && !target) target=profile.map.v;
         if (!target||target===lower||!eligible(word,i,opt.source,opt.profile))return char;
         eligibleCount++;
         if (hash(`${opt.seed}|${word}|${offset+i}`)/4294967296 >= opt.percent/100) return char;
@@ -95,7 +105,7 @@
     });
     return {text:result,eligible:eligibleCount,replaced,letters:letterCount};
   }
-  const api={version:'0.1.0',profiles,language,settings,transform,hash};
+  const api={version:'0.2.0',profiles,language,settings,transform,hash};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   else root.Scriptbridge=api;
 })(typeof globalThis==='undefined'?this:globalThis);

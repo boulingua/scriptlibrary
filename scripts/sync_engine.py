@@ -8,5 +8,5 @@ src=args.source/'extension/engine.js'
 dest=root/'static/js/engine.js'
 shutil.copyfile(src,dest)
 shutil.copyfile(args.source/'LICENSE',root/'third_party/scriptbridge-LICENSE')
-(root/'third_party/engine.lock.json').write_text(json.dumps({'package':'@boulingua/scriptbridge','version':'0.1.0','source':'scriptbridge/extension/engine.js','sha256':hashlib.sha256(src.read_bytes()).hexdigest()},indent=2)+'\n')
+(root/'third_party/engine.lock.json').write_text(json.dumps({'package':'@boulingua/scriptbridge','version':json.loads((args.source/'extension/manifest.json').read_text())['version'],'source':'scriptbridge/extension/engine.js','sha256':hashlib.sha256(src.read_bytes()).hexdigest()},indent=2)+'\n')
 print('Engine copied and digest locked')

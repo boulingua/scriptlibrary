@@ -21,6 +21,12 @@ jobs:
         with:
           hugo-version: '0.159.2'
           extended: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
       - run: pip install -r requirements.txt
       - run: python3 scripts/verify.py
       - run: hugo --minify --gc --panicOnWarning

@@ -11,3 +11,5 @@ body{font-family:LibrarySans,'Source Sans 3',sans-serif}.container{max-width:108
 @media(max-width:600px){.book-card{display:block}.book-cover{min-height:34rem}.book-cover .cover-title{font-size:3.5rem;max-width:28rem}.book-caption{padding-top:1.8rem}.library-intro{padding-top:2rem}}
 
 .navigation .navigation-title,.navigation .navigation-list .navigation-link{color:var(--boulingua-fg)}.book-page .reading-text p{text-align:start}.book-page .reading-text .verse{text-align:center}.license-note{font-size:1.35rem;line-height:1.55;max-width:78rem}
+
+.learning-notice{padding:2rem;margin:3rem 0;border:1px solid var(--boulingua-rule,#E4E7EB);font-size:1.6rem}.learning-notice h2{font-size:2rem;margin-top:0}.learning-notice p{text-align:start}.learning-notice details,.edition-group{margin:1rem 0}.book-page .reading-text p.drama{white-space:pre-line;text-indent:0;text-align:start;margin:1.2rem 0}.cover-title{font-size:clamp(2.5rem,3vw,3.5rem)}
