@@ -37,4 +37,4 @@ Course navigation, footer, colour control, tokens and shared CSS are imported. T
 
 `third_party/` holds the engine lock and licences; do not rename it `vendor/`, which Go interprets as a module-vendoring directory. `.tools/`, generated site output, dependencies and review images are ignored.
 
-Publishing has not occurred. The Pages workflow is prepared for a future `boulingua/scriptlibrary` repository. Native Chrome permission-consent review remains outside the automated browser harness. Sound matching is heuristic, not a phonetic dictionary or evidence of educational efficacy.
+The public repository is `https://github.com/boulingua/scriptlibrary`. GitHub Pages uses the GitHub Actions source; pushes to `main` run verification, build and deployment. Inspect the latest workflow and deployed URL for current hosted status. Native Chrome permission-consent review remains outside the automated browser harness. Sound matching is heuristic, not a phonetic dictionary or evidence of educational efficacy.
