@@ -57,7 +57,7 @@ npx playwright install chromium
 Leave the server running and open `http://localhost:1317/scriptlibrary/`. In a second terminal inside the clone, run:
 
 ```sh
-CHROMIUM="$(node -p 'require("@playwright/test").chromium.executablePath()')" npm run test:browser
+npm run test:browser
 ```
 
 Use `LIBRARY_URL` to test a different preview address. On Linux, missing browser system libraries can be installed with `npx playwright install --with-deps chromium`. The browser suite checks all book/alphabet combinations against the shared engine, saved settings, original view, mobile navigation, light/dark mode and complete no-JavaScript text. PDF verification checks source/engine/edition hashes, chapter counts, bookmarks, author metadata, glyph coverage and retained licence text.

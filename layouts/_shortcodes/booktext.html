@@ -1,2 +1,2 @@
 {{ $data := index hugo.Data.texts (.Get 0) }}
-{{ range $data.chapters }}<section class="reading-chapter" id="{{ .id }}"><h2>{{ .title }}</h2>{{ range .paragraphs }}<p data-paragraph="{{ .id }}" class="{{ if .drama }}drama{{ else if .verse }}verse{{ end }}">{{ range $i, $run := .runs }}{{ if $run.em }}<em>{{ $run.text }}</em>{{ else }}{{ $run.text }}{{ end }}{{ end }}</p>{{ end }}</section>{{ end }}
+{{ range $data.chapters }}<section class="reading-chapter" id="{{ .id }}"><h2>{{ .title }}</h2>{{ range .paragraphs }}<pre data-paragraph="{{ .id }}" class="{{ if .drama }}drama{{ else if .verse }}verse{{ end }}">{{ range $i, $run := .runs }}{{ if $run.em }}<em>{{ $run.text }}</em>{{ else }}{{ $run.text }}{{ end }}{{ end }}</pre>{{ end }}</section>{{ end }}

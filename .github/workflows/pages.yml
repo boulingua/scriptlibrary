@@ -31,6 +31,26 @@ jobs:
       - run: python3 scripts/verify.py
       - run: hugo --minify --gc --panicOnWarning
       - run: python3 scripts/check_links.py public
+      - run: npx playwright install --with-deps chromium
+      - name: Exercise the built reader
+        run: |
+          mkdir -p build/preview
+          ln -s "$PWD/public" build/preview/scriptlibrary
+          python3 -m http.server 1317 --bind 127.0.0.1 --directory build/preview > /tmp/library-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid"' EXIT
+          python3 - <<'PYCODE'
+          import time, urllib.request
+          for attempt in range(50):
+              try:
+                  urllib.request.urlopen('http://127.0.0.1:1317/scriptlibrary/', timeout=1)
+                  break
+              except OSError:
+                  time.sleep(.2)
+          else:
+              raise SystemExit('Preview server did not start')
+          PYCODE
+          LIBRARY_URL=http://127.0.0.1:1317/scriptlibrary/ npm run test:browser
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public

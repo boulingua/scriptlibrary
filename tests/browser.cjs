@@ -2,7 +2,8 @@ const {chromium}=require('@playwright/test');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const D=require('../static/js/editions.js'),E=require('../static/js/engine.js'),root=path.resolve(__dirname,'..');
 (async()=>{
- const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+ fs.mkdirSync(path.join(root,'tmp'),{recursive:true});
+ const browser=await chromium.launch({...(process.env.CHROMIUM ? {executablePath:process.env.CHROMIUM} : {channel:'chromium'}),headless:true,args:[]});
  try{
  const base=process.env.LIBRARY_URL||'http://localhost:1317/scriptlibrary/';
  const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[],failed=[];
