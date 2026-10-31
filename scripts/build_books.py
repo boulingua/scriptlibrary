@@ -57,7 +57,6 @@ def extract(book):
     footer=soup.select_one('#pg-footer')
     if not footer or 'FULL PROJECT GUTENBERG' not in footer.get_text():raise ValueError('Missing full licence')
     licence='\n'.join(line.rstrip() for line in footer.get_text('\n',strip=True).splitlines())
-    (ROOT/f"static/sources/{book['id']}-license.txt").write_text(licence+'\n')
     chapters=[]
     if book['pg_id']==22367:
         for h in soup.find_all('h2'):
@@ -281,6 +280,7 @@ def main():
         if args.books and book['id'] not in args.books:
             catalog.append(previous[book['id']]);continue
         data,licence=extract(book)
+        (ROOT/f"static/sources/{book['id']}-license.txt").write_text(licence+'\n')
         write_json(ROOT/f"data/texts/{book['id']}.json",data)
         write_json(ROOT/f"static/books-data/{book['id']}.json",data)
         original='\n\n'.join(ch['title']+'\n\n'+'\n\n'.join(''.join(r['text']for r in p['runs'])for p in ch['paragraphs'])for ch in data['chapters'])

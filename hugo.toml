@@ -19,6 +19,7 @@ disableKinds = ["taxonomy", "term", "RSS"]
   license = "Public-domain books; MIT code; CC BY-SA 4.0 editorial content"
 [params.plausible]
   domain = ""
+  src = ""
 [[menu.main]]
   name = "Library"
   url = "/"

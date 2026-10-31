@@ -10,9 +10,10 @@ const D=require('../static/js/editions.js'),E=require('../static/js/engine.js'),
  page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)failed.push(r.url());});
  const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/catalog.json')));
  for(const book of catalog){
+  console.log(`Checking ${book.id}`);
   const data=JSON.parse(fs.readFileSync(path.join(root,`data/texts/${book.id}.json`)));
   const paragraphs=data.chapters.flatMap(c=>c.paragraphs);
-  await page.goto(base+`books/${book.id}/`);await page.waitForFunction(()=>document.querySelector('#reading-status').textContent.includes('letters changed'));
+  await page.goto(base+`books/${book.id}/`);await page.waitForFunction(()=>document.querySelector('#reading-status').textContent.includes('letters changed')).catch(async error=>{throw new Error(`${book.id}: ${await page.locator('#reading-status').textContent()}; browser errors: ${errors.join('; ')}; ${error.message}`);});
   assert.equal(await page.locator('.downloads a[download][href$=".pdf"]').count(),16);
   assert.equal(await page.locator('.learning-notice').count(),1);
   for(const profile of [...Object.keys(E.profiles),'original'])for(const mode of (profile==='original'?['20']:['20','100','progressive'])){
@@ -26,7 +27,13 @@ const D=require('../static/js/editions.js'),E=require('../static/js/engine.js'),
   await page.locator('#mode').selectOption('fixed');
   await page.locator('#profile').selectOption('cyrillic');await page.locator('#density').fill('55');await page.reload();assert.equal(await page.locator('#density').inputValue(),'55');
   await page.locator('#mode').selectOption('progressive');await page.reload();assert.equal(await page.locator('#mode').inputValue(),'progressive');await page.locator('#original').click();assert.equal(await page.locator('#profile').inputValue(),'original');
+  await page.reload();await page.locator('#original').click();assert.equal(await page.locator('#profile').inputValue(),'cyrillic','Resume practice must retain the previous alphabet after an original-view reload');
  }
+ // Existing saved records have no lastPractice field. Preserve their alphabet;
+ // a legacy original-only record cannot recover an alphabet it never stored.
+ await page.evaluate(()=>localStorage.setItem('scriptlibrary:alice',JSON.stringify({profile:'polish',percent:45,mode:'fixed'})));
+ await page.goto(base+'books/alice/');assert.equal(await page.locator('#profile').inputValue(),'polish');
+ await page.locator('#original').click();await page.reload();await page.locator('#original').click();assert.equal(await page.locator('#profile').inputValue(),'polish');
  await page.goto(base);await page.screenshot({path:path.join(root,'tmp/library-desktop.png'),fullPage:true});
  await page.locator('#dark-mode-toggle').click();assert.match(await page.locator('body').getAttribute('class'),/colorscheme-dark/);await page.waitForFunction(()=>Number(getComputedStyle(document.querySelector('.navigation-title')).color.match(/\d+/)[0])>180);await page.screenshot({path:path.join(root,'tmp/library-dark.png'),fullPage:true,animations:'disabled'});await page.locator('#dark-mode-toggle').click();
  await page.setViewportSize({width:390,height:844});await page.goto(base);await page.screenshot({path:path.join(root,'tmp/library-mobile.png'),fullPage:true});

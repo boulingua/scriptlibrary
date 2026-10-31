@@ -5,6 +5,8 @@ from pypdf import PdfReader
 from fontTools.ttLib import TTFont
 import json,hashlib,subprocess,re
 from zipfile import ZipFile
+import build_books
+from pdf_parity import assert_narrative_parity
 root=Path(__file__).resolve().parents[1]
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 manifest=json.loads((root/'sources/editions-manifest.json').read_text())
@@ -20,17 +22,22 @@ assert len(sources)==len(manifest['books'])==18
 assert all(sum(b['language']==lang for b in sources)==6 for lang in ['de','fr','en'])
 assert json.loads((root/'data/catalog.json').read_text())==manifest['books']
 profiles=json.loads((root/'data/profiles.json').read_text())
-pdfs=0;pages=0
+fonts={name:TTFont(root/f'static/fonts/{name}.ttf').getBestCmap()
+       for name in ['NotoSerif-Regular','NotoSerif-Italic']}
+pdfs=0;pages=0;paragraphs=0
 for book in manifest['books']:
     source=next(b for b in sources if b['id']==book['id'])
     assert sha(root/f"sources/raw/{book['pg_id']}.html")==source['source_sha256']==book['source_sha256']
     data=json.loads((root/f"data/texts/{book['id']}.json").read_text())
+    fresh, fresh_licence = build_books.extract(dict(source))
+    assert fresh == data, f"Frozen-source extraction differs: {book['id']}"
     assert data==json.loads((root/f"static/books-data/{book['id']}.json").read_text())
     assert len(data['chapters'])==source['expected_chapters']
     assert all(c['paragraphs'] for c in data['chapters'])
     ids=[p['id']for c in data['chapters']for p in c['paragraphs']];assert len(ids)==len(set(ids))
     assert book['words']>5000
     license_text=(root/f"static/sources/{book['id']}-license.txt").read_text()
+    assert fresh_licence+'\n' == license_text
     assert 'FULL PROJECT GUTENBERG' in license_text
     expected={(p['id'],m) for p in profiles for m in (['original'] if p['id']=='original' else ['20','100','progressive'])}
     assert {(e['profile'],e['mode']) for e in book['editions']}==expected
@@ -44,6 +51,13 @@ for book in manifest['books']:
         assert 'FULL PROJECT GUTENBERG' in text
         normal=lambda s:re.sub(r'\s+','',s).replace('\u00ad','')
         assert normal(license_text) in normal(text),f"Licence truncated in {path.name}"
+        expected = build_books.transformed(fresh, source, edition['profile'],
+                                           '20' if edition['profile']=='original' else edition['mode'])
+        assert (expected['eligible'],expected['replaced']) == (edition['eligible'],edition['replaced'])
+        try:
+            paragraphs += assert_narrative_parity(text, expected['data'], fonts)
+        except AssertionError as exc:
+            raise AssertionError(f'{path.name}: {exc}') from exc
         if edition['profile']!='original':
             assert edition['replaced']>0
             assert 'For learning purposes only.' in text
@@ -56,4 +70,4 @@ for book in manifest['books']:
 font=TTFont(root/'static/fonts/NotoSerif-Regular.ttf');cmap=font.getBestCmap()
 for ch in 'μνπτκφλρσςβζαιобдфгклмнпрствзжґіøæäö':assert ord(ch) in cmap,f'Missing font glyph {ch}'
 assert pdfs==288
-print(f'PASS: {pdfs} PDFs, {pages} pages; frozen sources, full licences, outlines, authors, font coverage and engine digest')
+print(f'PASS: {pdfs} PDFs, {pages} pages, {paragraphs} ordered narrative paragraphs; re-extracted frozen sources, transformed PDF text, full licences, outlines, authors, full narrative font coverage and engine digest')

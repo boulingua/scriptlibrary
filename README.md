@@ -28,7 +28,7 @@ Use Node 22+ and Python 3.12+ with `pip install -r requirements.txt`, then `pyth
 
 The unchanged JS engine is vendored with a SHA-256 lock. To update deliberately from the sibling extension, run `python3 scripts/sync_engine.py --source ../scriptbridge`, review the engine and lock changes, rebuild editions, and run the verification. Ordinary builds never silently sync rules or fetch new book text.
 
-Run `python3 scripts/verify.py`, then `./scripts/hugo.sh --minify --gc --panicOnWarning --destination build-check` and `python3 scripts/check_links.py build-check`. For browser checks, run `npm ci` and `npm run test:browser` with the local server on port 1317 (or set `LIBRARY_URL`). The test uses `/usr/bin/chromium` by default; set `CHROMIUM` for another installation. The deployment workflow builds already committed editions and verifies them; it does not regenerate PDFs during deployment.
+Run `python3 scripts/verify.py`, then `./scripts/hugo.sh --minify --gc --panicOnWarning --destination build-check` and `python3 scripts/check_links.py build-check`. For browser checks, run `npm ci`, `npx playwright install chromium` and `npm run test:browser` with the local server on port 1317 (or set `LIBRARY_URL`). Tests use Playwright's bundled Chromium; set `CHROMIUM` only for an explicit compatible-browser override. The deployment workflow builds already committed editions and verifies them; it does not regenerate PDFs during deployment.
 
 ## Licensing
 
@@ -46,6 +46,7 @@ cd scriptlibrary
 python3 -m venv .venv
 . .venv/bin/activate
 python3 -m pip install -r requirements.txt
+python3 -m unittest discover -s tests -v
 python3 scripts/verify.py
 ./scripts/hugo.sh --minify --gc --panicOnWarning --destination build-check
 python3 scripts/check_links.py build-check
@@ -60,7 +61,16 @@ Leave the server running and open `http://localhost:1317/scriptlibrary/`. In a s
 npm run test:browser
 ```
 
-Use `LIBRARY_URL` to test a different preview address. On Linux, missing browser system libraries can be installed with `npx playwright install --with-deps chromium`. The browser suite checks all book/alphabet combinations against the shared engine, saved settings, original view, mobile navigation, light/dark mode and complete no-JavaScript text. PDF verification checks source/engine/edition hashes, chapter counts, bookmarks, author metadata, glyph coverage and retained licence text.
+Use `LIBRARY_URL` to test a different preview address. On Linux, missing browser system libraries can be installed with `npx playwright install --with-deps chromium`. The browser suite checks all book/alphabet combinations against the shared engine, saved settings (including resuming the previous alphabet after reloading the original view), mobile navigation, light/dark mode and complete no-JavaScript text.
+
+PDF verification reads only committed inputs/outputs. It re-extracts all frozen
+source texts and licences, computes every edition using the shared engine and
+requires every narrative paragraph to occur in PDF text in order. Only layout
+whitespace and discretionary hyphens are normalized. Every narrative character
+must exist in both supplied PDF font styles; source/engine/edition hashes, counts,
+bookmarks, author metadata and the complete licence are checked as well. This
+full 288-PDF check can take several minutes. The Python regressions deliberately
+remove, reorder and change paragraphs and remove a font glyph to test rejection.
 
 ## Repository structure
 

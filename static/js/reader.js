@@ -8,7 +8,7 @@
   const profileSelect=$('profile');
   for(const [id,p] of Object.entries(Scriptbridge.profiles)){const option=document.createElement('option');option.value=id;option.textContent=p.label;profileSelect.append(option);}
   profileSelect.value='greek';
-  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved){$('profile').value=saved.profile==='original'?'original':Scriptbridge.settings(saved).profile;if(saved.mode==='progressive')$('mode').value='progressive';$('density').value=Scriptbridge.settings(saved).percent;}}catch{}
+  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved){lastPractice=Scriptbridge.settings({profile:saved.lastPractice||saved.profile}).profile;$('profile').value=saved.profile==='original'?'original':Scriptbridge.settings(saved).profile;if(saved.mode==='progressive')$('mode').value='progressive';$('density').value=Scriptbridge.settings(saved).percent;}}catch{}
   function update(){
     const profile=$('profile').value,percent=Number($('density').value),source=root.dataset.language;
     if(profile!=='original')lastPractice=profile;
@@ -27,7 +27,7 @@
     const p=Scriptbridge.profiles[profile];
     $('mapping-note').textContent=p?p.note:'The unchanged original text.';
     $('letter-key').textContent=p?Object.entries(p.map).map(([a,b])=>`${a} → ${b}`).join('   ·   '):'';
-    try{localStorage.setItem(storageKey,JSON.stringify({profile,percent,mode:$('mode').value}));}catch{}
+    try{localStorage.setItem(storageKey,JSON.stringify({profile,lastPractice,percent,mode:$('mode').value}));}catch{}
   }
   $('profile').addEventListener('change',update);$('mode').addEventListener('change',update);$('density').addEventListener('input',update);
   $('original').addEventListener('click',()=>{$('profile').value=$('profile').value==='original'?lastPractice:'original';update();});
