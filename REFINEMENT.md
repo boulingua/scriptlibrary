@@ -96,7 +96,8 @@ runs passed against a stable static server. No production-runtime retry was adde
 Three explicitly listed compatibility files remain byte-identical to the
 candidate kit because the published historical pin lacks them. The manifest,
 regression and retirement procedure in docs/kit-compatibility.md constrain this
-transition; the two A1 head-shadow findings are not a general override waiver.
+transition. The initial A1 run reported two head shadows; the subsequent narrow
+registry-bound exception described below does not permit arbitrary overrides.
 The old kit's main.wrapper does not satisfy the candidate C14 #main-content
 selector, so historical behavior is evidenced by the product checks rather than
 claiming that new shared DOM assertion passed there. Course-only author,
@@ -104,6 +105,21 @@ curriculum, shortcode and RSS assumptions do not redefine this reading product.
 
 Independent review found the automatic-dark button gap above; it was fixed and
 both complete product runs repeated successfully. No further material finding
-was identified in that bounded review. New hosted validation and deployment are
-separate from this local follow-up; the earlier d84ae9b hosted success remains
-historical evidence for that exact commit.
+was identified in that bounded review. The dated integration JSON remains the
+immutable local checkpoint; subsequent hosted verification is recorded below.
+The earlier d84ae9b success remains evidence for that exact commit.
+
+## Compatibility gate and hosted follow-up — 2 November 2026
+
+The updated candidate A1 gate now accepts exactly the three registered temporary
+copies at kit v1.22.0 when the manifest, local files and current kit bytes match.
+Changed branding or partials, additional paths, module replacements and partial
+retirement fail. Promoting the kit pin still requires removing all three copies
+and the manifest together. The earlier integration receipt has not been rewritten.
+
+Commit `21acdef705ae40a7162e23e458a43b9a6ddc06dc` passed the
+[hosted workflow](https://github.com/boulingua/scriptlibrary/actions/runs/41480154465).
+The build verified the complete PDF corpus, unit tests, strict Hugo output,
+local links and browser reader/accessibility journeys. The deployment job was
+skipped. This is hosted verification of that runtime commit under its recorded
+pins, not publication of the coordinated foundation release or a deployment.

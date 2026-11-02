@@ -10,10 +10,12 @@ shared branding in both the historically pinned and candidate builds.
 
 This is a narrow transition record, not a waiver for arbitrary module overrides.
 The product test checks exact file hashes and the historical module pin.
-The course-wide A1 checker still reports the two head shadows; its unqualified
-course-fork wording does not describe this documented product transition.
-New integration validation compares the copies to the actual candidate kit and
-exercises both module configurations.
+The updated candidate A1 gate registers only these three paths at the historical
+pin. It requires the suite contract, manifest, local files and current kit
+counterparts to agree, and rejects module replacements, extra paths, changed
+bytes and incomplete retirement. Earlier A1 runs reported the two head shadows;
+the dated integration receipt preserves that earlier checkpoint. Both module
+configurations remain covered by the product integration checks.
 
 When approved foundation publication permits the library pin to move, remove
 the three listed local files and kit-compatibility.json in that same change,
