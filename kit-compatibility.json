@@ -1,0 +1,10 @@
+{
+  "purpose": "Temporary standalone compatibility until the published kit pin includes these shared files. No broader override exception.",
+  "kit_pin": "v1.22.0",
+  "files": {
+    "layouts/_partials/head/custom-icons.html": "8b96ccde89c94ffe47fdfad59f9e8012915c585a131c5ed18717d689688fc93a",
+    "layouts/_partials/head/theme-styles.html": "50fec3e61af9e118ac8ac898ca764260c3fec51ca7188c5b1d3fd91b0bb783fc",
+    "static/brand/hub.svg": "37eff879ff9bf9652d17e5d2012d31ff8dac9c80f38e385ff6473e861d0ff878"
+  },
+  "retirement": "After promotion to a published kit release containing these exact shared counterparts, remove the three local copies and this manifest in the same consumer change. Preserve historical source/book/PDF author metadata."
+}

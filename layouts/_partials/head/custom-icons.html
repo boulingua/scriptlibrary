@@ -1,1 +1,3 @@
-<link rel="icon" type="image/png" href="{{ "images/icon.png" | relURL }}">
+{{- $code := site.Params.code | default "template" -}}
+{{- if in (slice "website" "ressources" "scriptlibrary") $code }}{{ $code = "hub" }}{{ end -}}
+<link rel="icon" type="image/svg+xml" sizes="any" href="{{ printf "brand/%s.svg" $code | relURL }}">

@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-02",
+  "configurations": [
+    {
+      "configuration": "library-pinned",
+      "strict_hugo_build": "passed",
+      "hugo_log_sha256": "64f1122717fe38eec0b22320640eccc17c03590ff303ce68b07e08cd96f3c589",
+      "browser_cases": 288,
+      "browser_log_sha256": "c2c17071b2188f59e382d5c48bbc171f1896ca01d6e76e498ec679f5d917e1c2",
+      "browser_scope": "reader-engine parity, persisted settings, original view, mobile navigation, no-JavaScript complete text; WCAG2/2.1 A/AA home light/dark and reader automatic dark",
+      "local_references": 946,
+      "local_link_failures": 0,
+      "links_log_sha256": "fab4a23a41ca51771b502f1870de3873bcd134d682b80e396908322037cf9d3e",
+      "home_html_sha256": "1fce68d551b4280528bf168e023b1a5d7ea91ecc121a8a3ff3fc792e174bb331"
+    },
+    {
+      "configuration": "library-candidate",
+      "strict_hugo_build": "passed",
+      "hugo_log_sha256": "a64e238f3424f4ac775c545ac598cf7a6893966edcfd68bc52d1207a72429633",
+      "browser_cases": 288,
+      "browser_log_sha256": "c2c17071b2188f59e382d5c48bbc171f1896ca01d6e76e498ec679f5d917e1c2",
+      "browser_scope": "reader-engine parity, persisted settings, original view, mobile navigation, no-JavaScript complete text; WCAG2/2.1 A/AA home light/dark and reader automatic dark",
+      "local_references": 998,
+      "local_link_failures": 0,
+      "links_log_sha256": "6a038c7795c0f1590bd51774b57e94f07b1d166d621f933342279969e9fc464a",
+      "home_html_sha256": "97b8d72fbae34cc7fa6902abf2e829cbb0606fd65047c2a563dfc9521494c1cf"
+    }
+  ],
+  "candidate_shared_C14": "passed: one representative product home, light/dark; zero findings/errors/failed requests",
+  "candidate_C14_receipt_sha256": "bb4e025dfe20a3108507bdb0bb6e3affe9b5b50e5b320834310da0d959860bb9",
+  "python_tests": 4,
+  "javascript_suites": 1,
+  "compatibility": {
+    "purpose": "Temporary standalone compatibility until the published kit pin includes these shared files. No broader override exception.",
+    "kit_pin": "v1.22.0",
+    "files": {
+      "layouts/_partials/head/custom-icons.html": "8b96ccde89c94ffe47fdfad59f9e8012915c585a131c5ed18717d689688fc93a",
+      "layouts/_partials/head/theme-styles.html": "50fec3e61af9e118ac8ac898ca764260c3fec51ca7188c5b1d3fd91b0bb783fc",
+      "static/brand/hub.svg": "37eff879ff9bf9652d17e5d2012d31ff8dac9c80f38e385ff6473e861d0ff878"
+    },
+    "retirement": "After promotion to a published kit release containing these exact shared counterparts, remove the three local copies and this manifest in the same consumer change. Preserve historical source/book/PDF author metadata."
+  },
+  "independent_review": "bounded code review closed automatic-dark button and transition-settling findings",
+  "source_and_PDF_bytes_changed": false,
+  "visual_review": "Final dark home and mobile reader screenshots inspected; no content/cropping defect observed in those views.",
+  "historical_C14_limitation": "Published v1.22.0 has main.wrapper rather than the new kit #main-content contract; historical product behavior is validated by its own checks.",
+  "transport_evidence": "Temporary Python preview reset script connections; failure trace retained. Stable Node preview final runs passed without changing runtime or increasing waits.",
+  "hosted_status": "These follow-up changes have not yet received hosted validation or deployment; earlier d84ae9b success applies to that commit only."
+}

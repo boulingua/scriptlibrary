@@ -1,7 +1,8 @@
 # Refinement record — 30 October 2026
 
-This is a local engineering candidate on `refine/2026-10-30`. No hosted CI,
-published release or production deployment of these changes has been observed.
+This is an engineering candidate on `refine/2026-10-30`. Exact-revision hosted
+validation is recorded below. No release publication or production deployment
+of these changes has been performed.
 The suite strategy and integration order live in the organisation repository,
 `docs/refinement-2026-10-30.md` and `docs/release-candidate-2026-10-30.md`.
 
@@ -67,3 +68,42 @@ book in the earlier probe); batching for slower devices is deferred.
 Plausible remains disabled. The privacy notice explicitly says so; copied claims of active Plausible collection were removed. This does not remove or make claims about separately documented hosting or other services.
 
 Privacy pages declare their analytics policy, language and built URL. New kit gate C9 checks actual HTML scripts and visible notices against configuration; it rejects missing, duplicate or mismatched scripts and contradictory notices. Six gate regressions and three scaffold tests passed. Representative strict builds/C9 passed for website, nsf, nvt, gfl, Scriptlibrary and all three resource-hub notice languages; the suite integration run verifies the remaining sites. This is configuration/content evidence, not certification of the remote server or legal compliance.
+
+
+## Hosted candidate verification — 31 October 2026
+
+Commit `d84ae9be553b1684d2117b4d5759a50e223724a2` passed the [hosted workflow](https://github.com/boulingua/scriptlibrary/actions/runs/41203013519) on the review branch. The build checked the complete PDF corpus, unit tests, strict Hugo output, links and browser reader journeys. The deployment job was skipped because this was not `main`. These results apply to the recorded dependency pins; the separate coordinated foundation release remains pending.
+
+## 2026-11-02 candidate-kit and historical-pin integration
+
+The library's blue text failed contrast on its tinted panel and on the older
+kit's background; old footer opacity reduced link contrast further. The product
+now uses the existing darker hub token and opaque footer links. Book covers use
+their visible author/title text as the accessible name. Automatic dark mode now
+uses dark button ink as well as the explicit dark toggle. These changes preserve
+all original book text, PDF bytes, source authors and the extension package.
+
+Both the historical v1.22.0 pin and the local candidate kit passed strict Hugo
+builds, all 288 reader/edition combinations, persisted-alphabet/original-view
+journeys, mobile navigation, complete no-JavaScript text, and automated WCAG
+2/2.1 A/AA home and automatic-dark reader-controls checks. Local-link checks
+passed (946 historical / 998 candidate references); four Python regressions and
+one JavaScript suite passed. The candidate shared C14 browser check also passed.
+The initial Python preview transport intermittently reset script connections;
+catch-only diagnostics establish that failure, and both final unchanged-timeout
+runs passed against a stable static server. No production-runtime retry was added.
+
+Three explicitly listed compatibility files remain byte-identical to the
+candidate kit because the published historical pin lacks them. The manifest,
+regression and retirement procedure in docs/kit-compatibility.md constrain this
+transition; the two A1 head-shadow findings are not a general override waiver.
+The old kit's main.wrapper does not satisfy the candidate C14 #main-content
+selector, so historical behavior is evidenced by the product checks rather than
+claiming that new shared DOM assertion passed there. Course-only author,
+curriculum, shortcode and RSS assumptions do not redefine this reading product.
+
+Independent review found the automatic-dark button gap above; it was fixed and
+both complete product runs repeated successfully. No further material finding
+was identified in that bounded review. New hosted validation and deployment are
+separate from this local follow-up; the earlier d84ae9b hosted success remains
+historical evidence for that exact commit.

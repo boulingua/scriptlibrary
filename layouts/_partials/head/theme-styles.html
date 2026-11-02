@@ -1,5 +1,4 @@
-{{/* hugo-coder MIT: preserve its stylesheet pipeline; omit root-relative unused font preloads on a project subpath. */}}
-
+{{/* hugo-coder 3d3bbd75d7bb, MIT. Font priority belongs to head/extensions.html. */}}
 {{ if hugo.IsServer }}
   {{ $cssOpts := (dict "targetPath" "css/coder.css" "enableSourceMap" true ) }}
   {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts }}
