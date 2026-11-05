@@ -1,4 +1,8 @@
 github.com/boulingua/kit v1.22.0 h1:kRXr0bJdJFVaduqhnhJHLBcUHdZ6N/r+SQSsNsLTnUs=
 github.com/boulingua/kit v1.22.0/go.mod h1:TPuFC8U8YxmCZeuCCusKG8ReGsdathn/Of0XjjDSr+w=
+github.com/boulingua/kit/v2 v2.0.0 h1:YTJ8c0l3DIH5yWxi10QSoE/FwPOYy9BP3AtELjUxZg0=
+github.com/boulingua/kit/v2 v2.0.0/go.mod h1:b8SEgJF6c/H8DMZkCBQf0uj5YiQHKiy/2QnZ1mIrsII=
+github.com/boulingua/kit/v2 v2.0.1 h1:G2fG+RvXjKwpAh+f5jGyySkHXxg/Gz0nvySB1/ujbxA=
+github.com/boulingua/kit/v2 v2.0.1/go.mod h1:b8SEgJF6c/H8DMZkCBQf0uj5YiQHKiy/2QnZ1mIrsII=
 github.com/luizdepra/hugo-coder v0.0.0-20260305123245-3d3bbd75d7bb h1:6xwlLvtPm7I6ngACdvWM477gfGyLylG/nU9+VVSMWrQ=
 github.com/luizdepra/hugo-coder v0.0.0-20260305123245-3d3bbd75d7bb/go.mod h1:9EQBf2rU+NPjlohGuKcEgdqSeOc3tIQoOty4xPpuUQ4=

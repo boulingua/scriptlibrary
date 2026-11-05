@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PATHS={'layouts/_partials/head/custom-icons.html','layouts/_partials/head/theme-styles.html','static/brand/hub.svg'}
 class KitCompatibility(unittest.TestCase):
     def test_compatibility_copies_are_exact_and_retire_with_the_old_pin(self):
-        pin=re.search(r'github\.com/boulingua/kit\s+(\S+)',(ROOT/'go.mod').read_text())[1]
+        pin=re.search(r'github\.com/boulingua/kit(?:/v[0-9]+)?\s+(\S+)',(ROOT/'go.mod').read_text())[1]
         manifest=ROOT/'kit-compatibility.json'
         if manifest.exists():
             data=json.loads(manifest.read_text());self.assertEqual(data['kit_pin'],'v1.22.0')

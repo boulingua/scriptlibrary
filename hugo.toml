@@ -44,6 +44,6 @@ disableKinds = ["taxonomy", "term", "RSS"]
   url = "https://boulingua.github.io/website/impressum/"
 [module]
   [[module.imports]]
-    path = "github.com/boulingua/kit"
+    path = "github.com/boulingua/kit/v2"
   [[module.imports]]
     path = "github.com/luizdepra/hugo-coder"
