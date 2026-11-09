@@ -18,8 +18,8 @@ disableKinds = ["taxonomy", "term", "RSS"]
   font_preload = ["fonts/SourceSans3-Regular.otf"]
   license = "Public-domain books; MIT code; CC BY-SA 4.0 editorial content"
 [params.plausible]
-  domain = ""
-  src = ""
+  domain = "boulingua.github.io/scriptlibrary"
+  src = "https://analytics.hellebo.de/js/script.file-downloads.outbound-links.js"
 [[menu.main]]
   name = "Library"
   url = "/"
